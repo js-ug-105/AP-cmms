@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"/>
+
+    <bean id="machines" class="pl.edu.ug.cmms.SampleData" factory-method="machines" />
+    <bean id="workOrders" class="pl.edu.ug.cmms.SampleData" factory-method="workOrders" />
+
+    <bean id="reportService" class="pl.edu.ug.cmms.ReportService">
+        <constructor-arg ref="machines" />
+        <constructor-arg ref="workOrders" />
+        <constructor-arg value="${cmms.report.top:3}" />
+        <constructor-arg value="${cmms.report.file:report.xml}" />
+    </bean>
+    
+    <bean id="reportRunner" class="pl.edu.ug.cmms.ReportRunner">
+        <constructor-arg ref="reportService" />
+    </bean>
+</beans>

@@ -1,0 +1,13 @@
+spring:
+  main:
+    # Wyłącza logo Springa przy starcie; bez tego logo trafiłoby do wyniku programu
+    banner-mode: off
+logging:
+  level:
+    # Na ekran trafiają tylko ostrzeżenia i błędy; bez tego logi Springa zasłoniłyby wynik programu
+    root: warn
+
+cmms:
+  report:
+    top: 3
+    file: report.xml
